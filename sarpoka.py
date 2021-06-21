@@ -1,28 +1,39 @@
-#!/usr/bin/env python
-from wsgiref.simple_server import make_server
+from webob import Request, Response
 
 
-def route(**kwargs):
-    def decorator(func, path='/', **kwargs):
-        return run(web_app=func, path=path)
+class Sarpoka:
+    """
+    *******************
+    ***** SARPOKA *****
+    *******************
 
-    return decorator
+    This is Python micro framework for making customized web apps.
+    """
 
+    def __init__(self):
+        self.routes = {}
 
-def render(data):
-    return data.encode()
+    def route(self, path):
+        def wrapper(handler):
+            self.routes[path] = handler
+            return handler
 
+        return wrapper
 
-def run(web_app, path='/'):
-    def app_wrapper(env, response):
-        request_path = env.get('PATH_INFO')
-        status = '200 OK'
-        headers = [('Content-Type', 'text/html; charset=utf-8'), ]
-        response(status, headers)
-        if request_path == path:
-            return [web_app()]
-        return [b'<h2>404 not found</h2>']
+    def __call__(self, environ: dict, start_response):
+        request = Request(environ)
 
-    with make_server('', 8002, app_wrapper) as httpd:
-        print('Serving on http://127.0.0.1:8002')
-        httpd.serve_forever()
+        response = self.handle_request(request)
+
+        return response(environ, start_response)
+
+    def handle_request(self, request: Request) -> Response:
+        requested_path = request.environ.get('PATH_INFO', '/')
+
+        response = Response()
+        view_func = self.routes.get(requested_path)
+        if not view_func:
+            response.text = '404 not found.'
+            return response
+        response.text = view_func(request, response)
+        return response

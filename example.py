@@ -1,10 +1,20 @@
-from wsgiref.simple_server import make_server
-from sarpoka import render, route
+from sarpoka import Sarpoka
+
+app = Sarpoka()
 
 
-@route(path='/')
-def foo():
-    return render('<h1>Working 2</h1>')
+@app.route('/')
+def home(request, response):
+  return 'Welcome Home!!'
 
 
-foo()
+
+@app.route('/about')
+def about(request, response):
+  return '''
+  <h1>Mohammad Ashraful Islam</h1>
+  <div>
+    Senior Software Engineer at Field Buzz <br/>
+    Tel: +8801624153810
+  </div>
+  '''
