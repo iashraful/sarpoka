@@ -4,13 +4,13 @@ app = Sarpoka()
 
 
 @app.route('/')
-def home(request, response):
+def home(request, response, **kwargs):
   return 'Welcome Home!!'
 
 
 
 @app.route('/about')
-def about(request, response):
+def about(request, response, **kwargs):
   return '''
   <h1>Mohammad Ashraful Islam</h1>
   <div>
