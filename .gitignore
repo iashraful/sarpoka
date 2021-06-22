@@ -1,7 +1,15 @@
 .vscode
+.devcontainer
 .idea
 
-__pycache__/*
 *.pyc
+__pycache__/
 
-venv/
+db.*
+postgres_data/*
+*.sqlite3
+
+*.egg*
+dist
+.env
+venv
