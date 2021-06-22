@@ -5,13 +5,21 @@ app = Sarpoka()
 
 @app.route('/')
 def home(request, response, **kwargs):
-  return 'Welcome Home!!'
+    return 'Welcome Home!!'
 
+
+@app.route('/api/me', methods=['GET', 'POST'])
+def get_me(request, response, **kwargs):
+    response.content_type = 'application/json'
+    response.status_code = 200
+    return {
+        'name': 'Mohammad Ashraful Islam'
+    }
 
 
 @app.route('/about')
 def about(request, response, **kwargs):
-  return '''
+    return '''
   <h1>Mohammad Ashraful Islam</h1>
   <div>
     Senior Software Engineer at Field Buzz <br/>
