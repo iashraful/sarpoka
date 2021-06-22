@@ -1,3 +1,4 @@
+from wsgiref.simple_server import make_server
 from webob import Request, Response
 from utils.parsers import parse_query_string, get_lower_from_list
 from utils.generics import generic_method_not_allowed_view
@@ -30,6 +31,11 @@ class Sarpoka:
         response = self.handle_request(request)
 
         return response(environ, start_response)
+
+    def run(self, host='localhost', port=8000 debug=True):
+        with make_server(host, port, self) as httpd:
+            print('Serving on http://{host}:{port}'.format(host=host, port=port))
+            httpd.serve_forever()
 
     def handle_request(self, request: Request) -> Response:
         requested_path = request.environ.get('PATH_INFO', '/')

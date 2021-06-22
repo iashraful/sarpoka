@@ -13,7 +13,7 @@ def get_me(request, response, **kwargs):
     response.content_type = 'application/json'
     response.status_code = 200
     return {
-        'name': 'Mohammad Ashraful Islam'
+        'name': 'Mohammad Ashraful Islam',
     }
 
 
@@ -26,3 +26,6 @@ def about(request, response, **kwargs):
     Tel: +8801624153810
   </div>
   '''
+
+
+app.run(debug=True)
