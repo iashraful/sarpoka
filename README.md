@@ -1,4 +1,4 @@
-# Fast DRF [![Python Packaging](https://github.com/iashraful/sarpoka/actions/workflows/python-package.yml/badge.svg?branch=master)](https://github.com/iashraful/sarpoka/actions/workflows/python-package.yml)
+# Fast DRF [![Python Packaging](https://github.com/iashraful/sarpoka/actions/workflows/python-packaging.yml/badge.svg?branch=master)](https://github.com/iashraful/sarpoka/actions/workflows/python-packaging.yml)
 > Sarpoka is a rapidly development Python micro framework designed for serverless applications
 
 ## Installation
