@@ -24,9 +24,9 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test with python's default unittest
+    - name: Test with PyTest
       run: |
-        python manage.py test
+        pytest
     - name: Packaging
       run: |
         python setup.py sdist
