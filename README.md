@@ -35,7 +35,19 @@ def about(request, response, **kwargs):
     Senior Software Engineer at Field Buzz<br/>
   </div>
   '''
+if __name__ == '__main__':
+    app.run(host='localhost', port='8080', debug=True)
 
+```
+
+## Run the application
+There are several ways. Let's walk one step at a time.
+* Just run the example.py file(It's in my case here. In your case filename might different)
+* You can use gunicorn to run the app at production level like following,
+```shell
+$ pip install gunicorn
+
+$ gunicorn example:app # Filename:Object name. According to the example it's example and the app
 ```
 
 ## Features
