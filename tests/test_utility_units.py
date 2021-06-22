@@ -1,4 +1,4 @@
-from utils.parsers import parse_query_string
+from utils.parsers import parse_query_string, get_lower_from_list
 
 
 def test_parse_query_string():
@@ -9,3 +9,7 @@ def test_parse_query_string():
     assert parsed_data['search'] == 'true'
     assert parsed_data['page'] == '10'
 
+def test_get_lower_from_list():
+    data = get_lower_from_list(['A', 'b', 'C'])
+    assert isinstance(data, list)
+    assert data == ['a', 'b', 'c']

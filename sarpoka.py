@@ -40,12 +40,14 @@ class Sarpoka:
         }
 
         response = Response()
-        allowed_methods, view_func = self.routes.get(requested_path)
-        if requested_method.lower() not in get_lower_from_list(allowed_methods):
-            view_func = generic_method_not_allowed_view
+        allowed_methods, view_func = self.routes.get(requested_path, ([], None,))
+        # When there is no view function. I mean not a actual page.
         if not view_func:
             response.text = '404 not found.'
             return response
+
+        if requested_method.lower() not in get_lower_from_list(allowed_methods):
+            view_func = generic_method_not_allowed_view
         kwargs['query'] = parse_query_string(query_string=query_params)
         response_body = view_func(request, response, **kwargs)
         if response.content_type.lower() == 'application/json':
