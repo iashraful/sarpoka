@@ -32,7 +32,7 @@ class Sarpoka:
 
         return response(environ, start_response)
 
-    def run(self, host='localhost', port=8000 debug=True):
+    def run(self, host='localhost', port=8000, debug=True):
         with make_server(host, port, self) as httpd:
             print('Serving on http://{host}:{port}'.format(host=host, port=port))
             httpd.serve_forever()
