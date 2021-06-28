@@ -1,6 +1,8 @@
 # Sarpoka [![Python Packaging](https://github.com/iashraful/sarpoka/actions/workflows/python-packaging.yml/badge.svg?branch=master)](https://github.com/iashraful/sarpoka/actions/workflows/python-packaging.yml)
 > Sarpoka is a rapidly development Python micro framework designed for serverless applications
 
+![Sarpoka, the Python framework](./extras/Charpoka.png)
+
 ## Installation
 ```sh
 pip install sarpoka
